@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @Component
 public class CustomerObj implements JsonNonNullVoInterface
 {
-	private String ID;
 	private String Login;
 	private String Password;
 	private String Name;
@@ -20,10 +19,9 @@ public class CustomerObj implements JsonNonNullVoInterface
 	private String CreateDTM;
 	private String UpdateDTM;
 	
-	public CustomerObj(String id, String login, String password, String name, String address, String phoneNum, String email)
+	public CustomerObj(String login, String password, String name, String address, String phoneNum, String email)
 	{
 		super();
-		ID = id;
 		Login = login;
 		Password = password;
 		Name = name;

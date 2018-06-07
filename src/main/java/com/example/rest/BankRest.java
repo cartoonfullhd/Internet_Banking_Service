@@ -305,10 +305,10 @@ public class BankRest
 				@RequestBody Map<String, String> json)
 		{
 			ResponseEntity<Integer> rs = null;
-			CustomerObj customer = new CustomerObj(json.get("ID"), json.get("Login"), json.get("Password"), json.get("Name"), json.get("Address"), json.get("PhoneNum"), json.get("Email"));
+			CustomerObj customer = new CustomerObj(json.get("Login"), json.get("Password"), json.get("Name"), json.get("Address"), json.get("PhoneNum"), json.get("Email"));
 			Integer status = accountSql.addCustomer(customer, new Timestamp(System.currentTimeMillis()));
 			
-			if(status == 200)
+			if(status == 1)
 			{
 				rs =  new ResponseEntity<Integer>(status, HttpStatus.OK);
 			}
