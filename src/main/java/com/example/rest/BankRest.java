@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.object.AccountObj;
 import com.example.object.AnyID;
 import com.example.object.BankObj;
+import com.example.object.CustomerObj;
 import com.example.object.ReceiveMoney;
 import com.example.object.Txn;
 import com.example.object.UserObj;
@@ -289,6 +290,24 @@ public class BankRest
 			ResponseEntity<Integer> rs = null;
 			
 			Integer status = interBanking.transferAnyID(json.get("AIPID"), json.get("SendBankCode"), json.get("SendAccountID"), json.get("Amount"));
+			if(status == 200)
+			{
+				rs =  new ResponseEntity<Integer>(status, HttpStatus.OK);
+			}
+			else {
+				rs =  new ResponseEntity<Integer>(status, HttpStatus.UNAUTHORIZED);
+			}
+			return rs;
+		}
+		
+		@PostMapping(path="/addaccount")
+		public ResponseEntity<Integer> registerAccount(
+				@RequestBody Map<String, String> json)
+		{
+			ResponseEntity<Integer> rs = null;
+			CustomerObj customer = new CustomerObj(json.get("ID"), json.get("Login"), json.get("Password"), json.get("Name"), json.get("Address"), json.get("PhoneNum"), json.get("Email"));
+			Integer status = accountSql.addCustomer(customer, new Timestamp(System.currentTimeMillis()));
+			
 			if(status == 200)
 			{
 				rs =  new ResponseEntity<Integer>(status, HttpStatus.OK);

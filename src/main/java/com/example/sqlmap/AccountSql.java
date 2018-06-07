@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 
 import com.example.object.AccountObj;
 import com.example.object.BankObj;
+import com.example.object.CustomerObj;
 import com.example.object.Txn;
 import com.example.object.UserObj;
 
@@ -140,4 +141,9 @@ public interface AccountSql
 	@Select(SQL_Get_Txn)
 	public List<Txn> getTxn(@Param("accountID") String accountID);
 	
+	public static final String SQL_Add_Customer = ""
+			+	"	INSERT INTO CUSTOMER  (CUSTOMERID, LOGIN , PASSWORD, NAME, ADDRESS, PHONENUM, EMAIL, CREATEDTM)"
+			+	"	VALUES (#{customer.ID}, #{customer.Login}, #{customer.Password}, #{customer.Name} ,#{customer.Address}, #{customer.PhoneNum}, #{customer.Email}, #{timestamp})";
+	@Insert(SQL_Add_Customer)
+	public Integer addCustomer(@Param("customer") CustomerObj customer, @Param("timestamp") Timestamp timeStamp);
 }
