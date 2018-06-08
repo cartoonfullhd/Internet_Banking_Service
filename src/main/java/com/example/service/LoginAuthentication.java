@@ -4,21 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.example.object.CustomerObj;
-import com.example.object.UserObj;
 import com.example.sqlmap.LoginSql;
 
 @Component
 public class LoginAuthentication
 {
 	@Autowired LoginSql loginSql;
-	@Autowired UserObj userObj;
 	@Autowired CustomerObj customerObj;
 	
 	public boolean checkLogin(String userName, String passWord)
 	{
 		boolean result = false;
-		userObj = loginSql.LoginBankUserResult(userName, passWord);
-		if(userObj != null)
+		customerObj = loginSql.LoginBankUserResult(userName, passWord);
+		if(customerObj != null)
 		{
 			return result = true;
 		}else 
@@ -43,6 +41,6 @@ public class LoginAuthentication
 	//get user id for sent to header back
 		public String getCustomerID()
 		{
-			return String.valueOf(userObj.getCustomerId());
+			return String.valueOf(customerObj.getCustomerID());
 		}
 }

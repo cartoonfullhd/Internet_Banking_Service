@@ -24,7 +24,6 @@ import com.example.object.BankObj;
 import com.example.object.CustomerObj;
 import com.example.object.ReceiveMoney;
 import com.example.object.Txn;
-import com.example.object.UserObj;
 import com.example.service.InterBanking;
 import com.example.service.LoginAuthentication;
 import com.example.service.TransferMoney;
@@ -124,11 +123,11 @@ public class BankRest
 	
 	//get customer detail
 	@GetMapping(path="/customerdetail")
-	public ResponseEntity<UserObj> getCustomerDetail(
+	public ResponseEntity<CustomerObj> getCustomerDetail(
 			@RequestParam("customer_id") String customerId)
 	{
-		ResponseEntity<UserObj> rs = null;
-		rs =  new ResponseEntity<UserObj>(accountSql.getCustomerDetail(Integer.parseInt(customerId)) , HttpStatus.OK);
+		ResponseEntity<CustomerObj> rs = null;
+		rs =  new ResponseEntity<CustomerObj>(accountSql.getCustomerDetail(Integer.parseInt(customerId)) , HttpStatus.OK);
 		return rs;
 	}
 	

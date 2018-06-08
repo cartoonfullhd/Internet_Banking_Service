@@ -12,7 +12,6 @@ import com.example.object.AccountObj;
 import com.example.object.BankObj;
 import com.example.object.CustomerObj;
 import com.example.object.Txn;
-import com.example.object.UserObj;
 
 @Mapper
 public interface AccountSql
@@ -88,7 +87,7 @@ public interface AccountSql
 			+	" FROM CUSTOMER "
 			+	" WHERE CUSTOMERID = #{customer_id}";
 	@Select(SQL_Get_CustomerDetail)
-	public UserObj getCustomerDetail(@Param("customer_id") int customer_id);
+	public CustomerObj getCustomerDetail(@Param("customer_id") int customer_id);
 	
 	public static final String SQL_Update_Transfer_TXN = ""
 			+	"	INSERT INTO TRANSFERTXN (RECEIVEBANKCODE , SENDBANKCODE ,SUBMITAMOUNT ,FEEAMOUNT, TXNTYPE ,TXNSTATE ,NETAMOUNT, SENDACCOUNTID, RECEIVEACCOUNTID, CREATEDTM)"
