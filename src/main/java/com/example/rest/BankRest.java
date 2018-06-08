@@ -29,6 +29,7 @@ import com.example.service.InterBanking;
 import com.example.service.LoginAuthentication;
 import com.example.service.TransferMoney;
 import com.example.sqlmap.AccountSql;
+import com.example.sqlmap.LoginSql;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -41,6 +42,7 @@ public class BankRest
 	@Autowired AccountSql accountSql;
 	@Autowired TransferMoney transferMoney;
 	@Autowired InterBanking interBanking;
+	@Autowired LoginSql loginSql;
 	
 	
 	//check login
@@ -229,7 +231,7 @@ public class BankRest
 			return rs;
 		}
 		
-		
+		//Check any id that duplicate or not
 		@GetMapping(path="/checkanyid")
 		public ResponseEntity<AnyID> checkAnyId(
 				@RequestParam("type") String type,
@@ -248,6 +250,7 @@ public class BankRest
 			return rs;
 		}
 		
+		//register any id
 		@PostMapping(path="/addanyid")
 		public ResponseEntity<Integer> addAnyId(
 				@RequestBody Map<String, String> json)
@@ -266,6 +269,7 @@ public class BankRest
 			return rs;
 		}
 		
+		//Delete any id from the system
 		@DeleteMapping(path="/deleteanyid")
 		public ResponseEntity<Integer> deleteAnyID(
 				@RequestParam("aipvalue") String aipvalue)
@@ -283,6 +287,7 @@ public class BankRest
 			return rs;
 		}
 		
+		//Transfer between bank
 		@PostMapping(path="/transferanyid")
 		public ResponseEntity<Integer> transferAnyId(
 				@RequestBody Map<String, String> json)
@@ -300,13 +305,14 @@ public class BankRest
 			return rs;
 		}
 		
+		//Register customer account
 		@PostMapping(path="/addaccount")
 		public ResponseEntity<Integer> registerAccount(
 				@RequestBody Map<String, String> json)
 		{
 			ResponseEntity<Integer> rs = null;
 			CustomerObj customer = new CustomerObj(json.get("Login"), json.get("Password"), json.get("Name"), json.get("Address"), json.get("PhoneNum"), json.get("Email"));
-			Integer status = accountSql.addCustomer(customer, new Timestamp(System.currentTimeMillis()));
+			Integer status = loginSql.addCustomer(customer, new Timestamp(System.currentTimeMillis()));
 			
 			if(status == 1)
 			{
@@ -314,6 +320,21 @@ public class BankRest
 			}
 			else {
 				rs =  new ResponseEntity<Integer>(status, HttpStatus.UNAUTHORIZED);
+			}
+			return rs;
+		}
+		
+		@GetMapping(path="/checkusername")
+		public ResponseEntity<String> checkCustomerUsername(
+				@RequestParam("username") String username)
+		{
+			ResponseEntity<String> rs = null;
+			if (loginAuthentication.checkUsername(username) == true) 
+			{
+				rs =  new ResponseEntity<String>("Duplicated username", HttpStatus.OK);
+			} else 
+			{
+				rs =  new ResponseEntity<String>("Valid register", HttpStatus.UNAUTHORIZED);
 			}
 			return rs;
 		}

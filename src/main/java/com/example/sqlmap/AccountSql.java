@@ -140,10 +140,4 @@ public interface AccountSql
 			+ 	" WHERE SENDACCOUNTID = #{accountID} OR RECEIVEACCOUNTID = #{accountID} ORDER BY CREATEDTM DESC";
 	@Select(SQL_Get_Txn)
 	public List<Txn> getTxn(@Param("accountID") String accountID);
-	
-	public static final String SQL_Add_Customer = ""
-			+	"	INSERT INTO CUSTOMER  (LOGIN , PASSWORD, NAME, ADDRESS, PHONENUM, EMAIL, CREATEDTM)"
-			+	"	VALUES (#{customer.Login}, #{customer.Password}, #{customer.Name} ,#{customer.Address}, #{customer.PhoneNum}, #{customer.Email}, #{timestamp})";
-	@Insert(SQL_Add_Customer)
-	public Integer addCustomer(@Param("customer") CustomerObj customer, @Param("timestamp") Timestamp timeStamp);
 }
