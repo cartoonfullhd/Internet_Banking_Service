@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TxnReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3fceec00-cd39-4414-a65c-fa859e15f9e1">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Internet_Banking"/>
+	<parameter name="accountID" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM  "TRANSFERTXN" WHERE "TRANSFERTXN"."SENDACCOUNTID" =  $P{accountID} OR  "TRANSFERTXN"."RECEIVEACCOUNTID" =  $P{accountID} ORDER BY  "TRANSFERTXN"."CREATEDTM" DESC]]>
+	</queryString>
+	<field name="TXNID" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="TXNID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="TRANSFERTXN"/>
+	</field>
+	<field name="TXNTYPE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TXNTYPE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="TRANSFERTXN"/>
+	</field>
+	<field name="TXNSTATE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TXNSTATE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="TRANSFERTXN"/>
+	</field>
+	<field name="FEEAMOUNT" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="FEEAMOUNT"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="TRANSFERTXN"/>
+	</field>
+	<field name="SUBMITAMOUNT" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="SUBMITAMOUNT"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="TRANSFERTXN"/>
+	</field>
+	<field name="NETAMOUNT" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="NETAMOUNT"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="TRANSFERTXN"/>
+	</field>
+	<field name="SENDBANKCODE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SENDBANKCODE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="TRANSFERTXN"/>
+	</field>
+	<field name="SENDACCOUNTID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SENDACCOUNTID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="TRANSFERTXN"/>
+	</field>
+	<field name="AIPID" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="AIPID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="TRANSFERTXN"/>
+	</field>
+	<field name="RECEIVEBANKCODE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="RECEIVEBANKCODE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="TRANSFERTXN"/>
+	</field>
+	<field name="RECEIVEACCOUNTID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="RECEIVEACCOUNTID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="TRANSFERTXN"/>
+	</field>
+	<field name="CREATEDTM" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="CREATEDTM"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="TRANSFERTXN"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="229" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Transparent" x="187" y="10" width="180" height="57" forecolor="#000000" backcolor="#FFFFFF" uuid="1f872795-80b8-442d-97d2-f1e9f9860e68"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="30" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Txn Report]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="-20" y="80" width="595" height="149" uuid="78bdba67-5f7c-4b99-9356-5829c9d6705e"/>
+				<subreportParameter name="accountID">
+					<subreportParameterExpression><![CDATA[$P{accountID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["com/jasper/templates/Account_Detail.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="31">
+			<staticText>
+				<reportElement mode="Opaque" x="-20" y="0" width="595" height="30" backcolor="#D9CECE" uuid="b57d8dfe-254a-42a4-be2b-5c48d753d6bb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Txn activities]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="51" splitType="Stretch">
+			<staticText>
+				<reportElement x="227" y="10" width="100" height="30" uuid="d2ced23c-69a0-429a-9c1c-0c9d1973d45f"/>
+				<textElement textAlignment="Center">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="10" width="100" height="30" uuid="afd21764-21d1-425f-8349-cf0875a4c21a"/>
+				<textElement textAlignment="Center">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="10" width="100" height="30" uuid="71acb64b-adef-4b59-98a3-a59c785089fa"/>
+				<textElement textAlignment="Center">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="50" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.spreadsheet.SpreadsheetLayout"/>
+			<textField>
+				<reportElement x="227" y="10" width="100" height="30" uuid="1e24de3e-ab90-45ae-9712-39b785887e36"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TXNTYPE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="10" width="100" height="30" uuid="ab3cefab-c2b2-4d81-bd48-4ba209f1c828"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SENDACCOUNTID}.equals($P{accountID}) 
+? "- " + $F{NETAMOUNT}
+: "+ " + $F{NETAMOUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="10" width="100" height="30" uuid="3ec40306-562a-4727-861b-a9cd5ee50bc8"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CREATEDTM}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="40" width="515" height="13" backcolor="#E6E6E6" uuid="283b74b3-f363-4bd4-a70c-29f27289e2c6"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="40" width="40" height="13" backcolor="#E6E6E6" uuid="efe49c15-a613-4a59-8200-31666bde0ce1"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="40" width="100" height="13" uuid="50793792-20b6-4fbd-b9f5-c074fc29b0f8"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Account_Detail" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f6fa92a2-12a1-4da3-8715-a4ae37e76088">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Internet_Banking"/>
+	<parameter name="accountID" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM  "ACCOUNT" WHERE  "ACCOUNT"."ACCOUNTID" =  $P{accountID}  ]]>
+	</queryString>
+	<field name="ACCOUNTID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ACCOUNTID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ACCOUNT"/>
+	</field>
+	<field name="CUSTOMERID" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="CUSTOMERID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ACCOUNT"/>
+	</field>
+	<field name="BANKCODE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="BANKCODE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ACCOUNT"/>
+	</field>
+	<field name="ACCOUNTTYPE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ACCOUNTTYPE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ACCOUNT"/>
+	</field>
+	<field name="STATUSCODE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="STATUSCODE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ACCOUNT"/>
+	</field>
+	<field name="BALANCEAMOUNT" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="BALANCEAMOUNT"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ACCOUNT"/>
+	</field>
+	<field name="CREATEDTM" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="CREATEDTM"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ACCOUNT"/>
+	</field>
+	<field name="UPDATEDTM" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="UPDATEDTM"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ACCOUNT"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="120">
+			<staticText>
+				<reportElement mode="Opaque" x="-20" y="0" width="595" height="30" backcolor="#D9CECE" uuid="56ec4add-27af-42be-aeae-25fe681f8929"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Account Details]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-20" y="30" width="140" height="30" uuid="5085ff2d-a23f-4374-b825-2ce567a9f9ef"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Account number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-20" y="60" width="140" height="30" uuid="5ae3d569-1085-46ee-a19a-0025323af0c7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Account type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-20" y="90" width="140" height="30" uuid="881e5f1d-ec32-422b-9639-30257965f327"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Account amount]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="475" y="30" width="100" height="30" uuid="a88ced41-e399-41e8-9478-c88237755f8b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ACCOUNTID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="475" y="60" width="100" height="30" uuid="901753bc-ee50-4c9e-8596-c748bbb6f5f1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ACCOUNTTYPE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="475" y="90" width="100" height="30" uuid="37ab9d84-b9db-4339-847d-b6c42ac375a3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BALANCEAMOUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+</jasperReport>

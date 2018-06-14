@@ -29,6 +29,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web-services</artifactId>
 		</dependency>
+		
+		<dependency>
+    		<groupId>net.sf.jasperreports</groupId>
+    		<artifactId>jasperreports</artifactId>
+    		<version>6.6.0</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
@@ -61,6 +68,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 </project>

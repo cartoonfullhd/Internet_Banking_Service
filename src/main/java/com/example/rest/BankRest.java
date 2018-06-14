@@ -24,6 +24,7 @@ import com.example.object.BankObj;
 import com.example.object.CustomerObj;
 import com.example.object.ReceiveMoney;
 import com.example.object.Txn;
+import com.example.service.DownloadReport;
 import com.example.service.InterBanking;
 import com.example.service.LoginAuthentication;
 import com.example.service.TransferMoney;
@@ -42,7 +43,7 @@ public class BankRest
 	@Autowired TransferMoney transferMoney;
 	@Autowired InterBanking interBanking;
 	@Autowired LoginSql loginSql;
-	
+	@Autowired DownloadReport downloadReport;
 	
 	//check login
 	@PostMapping(path="/login")
@@ -337,4 +338,15 @@ public class BankRest
 			}
 			return rs;
 		}
+		
+		//get txn report
+				@GetMapping(path="/txnreport")
+				public ResponseEntity<byte[]> getTxnReport(
+						@RequestParam("account_id") String accountID)
+				{
+					ResponseEntity<byte[]> rs = null;
+					
+					rs =  new ResponseEntity<byte[]>(downloadReport.generateReport() , HttpStatus.OK);
+					return rs;
+				}
 }
