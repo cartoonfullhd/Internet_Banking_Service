@@ -346,7 +346,14 @@ public class BankRest
 				{
 					ResponseEntity<byte[]> rs = null;
 					
-					rs =  new ResponseEntity<byte[]>(downloadReport.generateReport(accountID) , HttpStatus.OK);
+					if(downloadReport.generateReport(accountID).equals(null))
+					{
+						rs =  new ResponseEntity<byte[]>(HttpStatus.UNAUTHORIZED);
+					}
+					else
+					{
+						rs =  new ResponseEntity<byte[]>(downloadReport.generateReport(accountID) , HttpStatus.OK);
+					}
 					return rs;
 				}
 }

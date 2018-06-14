@@ -54,7 +54,7 @@ public class DownloadReport
 			 ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			 JasperExportManager.exportReportToPdfStream(jasperPrint, baos); 
 			 // Export to PDF.
-		     JasperExportManager.exportReportToPdfFile(jasperPrint, "C:\\Users\\USER\\Desktop\\"+"TxnReport.pdf");
+		     //JasperExportManager.exportReportToPdfFile(jasperPrint, "C:\\Users\\USER\\Desktop\\"+"TxnReport.pdf");
 			 bytes = baos.toByteArray();
 			 
 			// 3. JasperRunManager
