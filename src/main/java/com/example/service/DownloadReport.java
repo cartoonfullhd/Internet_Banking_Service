@@ -24,12 +24,12 @@ public class DownloadReport
 	String dbUname = "sa";
 	String dbPwd = "";
 	
-	public byte[] generateReport()
+	public byte[] generateReport(String accountID)
 	{
 		byte[] bytes = null;
 		try {
 			Map<String, Object> params = new HashMap<String, Object>();
-			params.put("accountID", "1234567890");
+			params.put("accountID", accountID);
 			
 			connection = DriverManager.getConnection(dbUrl, dbUname, dbPwd);
 			

@@ -346,7 +346,7 @@ public class BankRest
 				{
 					ResponseEntity<byte[]> rs = null;
 					
-					rs =  new ResponseEntity<byte[]>(downloadReport.generateReport() , HttpStatus.OK);
+					rs =  new ResponseEntity<byte[]>(downloadReport.generateReport(accountID) , HttpStatus.OK);
 					return rs;
 				}
 }
